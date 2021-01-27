@@ -1,0 +1,23 @@
+{
+    "name": "yd/ydredis/demo",
+    "description": "ydredis demo",
+    "homepage": "http://www.github.com/yundun-php/ydredis",
+    "keywords": ["php", "redis"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "jingwu",
+            "email": "jingwu@vip.163.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "monolog/monolog": "1.22.0"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "process-timeout":      600,
+        "preferred-install":    "dist",
+        "github-protocols":     ["https"]
+    }
+}

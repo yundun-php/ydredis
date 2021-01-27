@@ -1,0 +1,147 @@
+version: '3.7'
+volumes:
+    #单节点
+    ydredis_data_6379:
+        name: ydredis_data_6379
+        driver: local
+
+    #sentinel
+    ydredis_data_6380:
+        name: ydredis_data_6380
+        driver: local
+    ydredis_data_6381:
+        name: ydredis_data_6381
+        driver: local
+    ydredis_data_6382:
+        name: ydredis_data_6382
+        driver: local
+
+    #cluster
+    ydredis_data_6390:
+        name: ydredis_data_6390
+        driver: local
+    ydredis_data_6391:
+        name: ydredis_data_6391
+        driver: local
+    ydredis_data_6392:
+        name: ydredis_data_6392
+        driver: local
+    ydredis_data_6393:
+        name: ydredis_data_6393
+        driver: local
+    ydredis_data_6394:
+        name: ydredis_data_6394
+        driver: local
+    ydredis_data_6395:
+        name: ydredis_data_6395
+        driver: local
+
+services:
+  #单节点
+  ydredis_redis_6379:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: ydredis_redis_6379
+    volumes:
+      - ./master/:/etc/redis/
+      - ydredis_data_6379:/data
+    command: redis-server /etc/redis/redis_6379.conf
+    network_mode: "host"
+
+  #sentinel
+  senti_redis_6380:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_redis_6380
+    volumes:
+      - ./sentinel/:/etc/redis
+      - ydredis_data_6380:/data
+    command: redis-server /etc/redis/redis_6380.conf
+    network_mode: "host"
+  senti_redis_6381:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_redis_6381
+    volumes:
+      - ./sentinel/:/etc/redis
+      - ydredis_data_6381:/data
+    command: redis-server /etc/redis/redis_6381.conf
+    network_mode: "host"
+  senti_redis_6382:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_redis_6382
+    volumes:
+      - ./sentinel/:/etc/redis
+      - ydredis_data_6382:/data
+    command: redis-server /etc/redis/redis_6382.conf
+    network_mode: "host"
+
+
+  senti_26380:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_26380
+    volumes:
+      - ./sentinel/:/etc/redis
+    command: redis-sentinel /etc/redis/senti_26380.conf
+    network_mode: "host"
+  senti_26381:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_26381
+    volumes:
+      - ./sentinel/:/etc/redis
+    command: redis-sentinel /etc/redis/senti_26381.conf
+    network_mode: "host"
+  senti_26382:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: senti_26382
+    volumes:
+      - ./sentinel/:/etc/redis
+    command: redis-sentinel /etc/redis/senti_26382.conf
+    network_mode: "host"
+
+
+  cluster_redis_6390:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6390
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6390:/data
+    command: redis-server /etc/redis/redis_6390.conf
+    network_mode: "host"
+  cluster_redis_6391:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6391
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6391:/data
+    command: redis-server /etc/redis/redis_6391.conf
+    network_mode: "host"
+  cluster_redis_6392:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6392
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6392:/data
+    command: redis-server /etc/redis/redis_6392.conf
+    network_mode: "host"
+  cluster_redis_6393:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6393
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6393:/data
+    command: redis-server /etc/redis/redis_6393.conf
+    network_mode: "host"
+  cluster_redis_6394:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6394
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6394:/data
+    command: redis-server /etc/redis/redis_6394.conf
+    network_mode: "host"
+  cluster_redis_6395:
+    image: docker.nodevops.cn/web/redis:5_yd
+    container_name: cluster_redis_6395
+    volumes:
+      - ./cluster/:/etc/redis/
+      - ydredis_data_6395:/data
+    command: redis-server /etc/redis/redis_6395.conf
+    network_mode: "host"

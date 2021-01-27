@@ -1,0 +1,23 @@
+{
+    "name": "yd/ydredis",
+    "description": "Redis连接库",
+    "keywords": ["redis"],
+    "homepage": "https://github.com/yundun-php/ydredis.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jingwu",
+            "email": "jingwu@vip.163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Yd\\": "src/ydredis/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+    }
+}
